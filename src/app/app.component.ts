@@ -30,7 +30,7 @@ export class AppComponent {
   filterText: string = '';
   isSorted: boolean = false;
 
-  constructor(private http: HttpClient) {}
+  //constructor(private http: HttpClient) {}
 
   // Method to sort items
   sortItems() {
