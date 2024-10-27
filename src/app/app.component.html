@@ -7,7 +7,7 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<style>
+<!-- <style>
   :host {
     --bright-blue: oklch(51.01% 0.274 263.83);
     --electric-violet: oklch(53.18% 0.28 296.97);
@@ -322,7 +322,7 @@
       </div>
     </div>
   </div>
-</main>
+</main> -->
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
@@ -331,6 +331,26 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+<div class="container">
+  <!-- Filter Input -->
+  <mat-form-field>
+    <mat-label>Filter items</mat-label>
+    <input matInput placeholder="Filter" [(ngModel)]="filterText" />
+  </mat-form-field>
+
+  <!-- Sort Button -->
+  <button mat-raised-button color="primary" (click)="sortItems()">Sort Items</button>
+
+  <!-- List Display -->
+  <mat-list>
+    <mat-list-item *ngFor="let item of filteredItems()">
+      {{ item }}
+    </mat-list-item>
+  </mat-list>
+</div>
+
 
 
 <router-outlet />
