@@ -332,20 +332,22 @@
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
+<h1 class="header">SUMA KADA</h1>
 
 <div class="container">
-  <!-- Filter Input -->
-  <mat-form-field>
-    <mat-label>Filter items</mat-label>
-    <input matInput placeholder="Filter" [(ngModel)]="filterText" />
-  </mat-form-field>
+  <div class="filter">
+    <!-- Filter Input -->
+    <mat-form-field>
+      <mat-label>Filter items</mat-label>
+      <input matInput placeholder="Filter" [(ngModel)]="filterText" />
+    </mat-form-field>
 
-  <!-- Sort Button -->
-  <button mat-raised-button color="primary" (click)="sortItems()">Sort Items</button>
-
+    <!-- Sort Button -->
+    <button mat-raised-button color="primary" (click)="sortItems()">Sort Items</button>
+  </div>
   <!-- List Display -->
-  <mat-list>
-    <mat-list-item *ngFor="let item of filteredItems()">
+  <mat-list class="matlist">
+    <mat-list-item class ="matListBorder" *ngFor="let item of filteredItems()">
       {{ item }}
     </mat-list-item>
   </mat-list>

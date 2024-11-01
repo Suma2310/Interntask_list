@@ -16,9 +16,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     MatListModule,
     MatInputModule,
     MatButtonModule,
-   // BrowserModule,
+    // BrowserModule,
     FormsModule,          // Import FormsModule here
-    CommonModule
+    CommonModule,
+    HttpClientModule
     // other modules
   ],
   templateUrl: './app.component.html',
@@ -26,11 +27,25 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'interntask_list';
-  items: string[] = ['Banana', 'Apple', 'Orange', 'Grapes', 'Mango'];
+  items: string[] = [];
   filterText: string = '';
   isSorted: boolean = false;
 
-  //constructor(private http: HttpClient) {}
+  // Replace the URL with your public API endpoint
+
+
+  constructor(public http: HttpClient) {
+
+  }
+
+
+  ngOnInit() {
+    this.getdogBreeds().then(data =>
+    this.items = data.data.map((val: { attributes: { name: any; }; }) => val.attributes.name)  
+    ).catch(error =>
+      console.log('API Error : ' + error)
+    )
+  }
 
   // Method to sort items
   sortItems() {
@@ -46,4 +61,10 @@ export class AppComponent {
       item.toLowerCase().includes(this.filterText.toLowerCase())
     );
   }
+
+  //getting the dog breeds from API values
+  getdogBreeds(): Promise<any> {
+    return this.http.get('https://dogapi.dog/api/v2/breeds').toPromise();
+  }
 }
+
